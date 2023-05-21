@@ -3,7 +3,7 @@ import sqlalchemy as sa
 from datetime import datetime
 
 
-db = SQLAlchemy()
+db = SQLAlchemy(session_options={"autobegin":False})
 
 
 class Messages(db.Model):
@@ -18,9 +18,15 @@ class Messages(db.Model):
         self.message = message
         self.timestamp = timestamp
 
+    def __repr__(self):
+        return f"{self.id} {self.user} {self.timestamp} {self.message}"
 
-class User(db.Model):
+
+class Users(db.Model):
     id = sa.Column("id", sa.Integer, sa.Identity(), primary_key=True, index=True)
     name = sa.Column("name", sa.String(256))
     reg_time = sa.Column("regtime", sa.DateTime)
     last_activity = sa.Column("last_activity", sa.DateTime)
+
+    def __repr__(self):
+        return f"{self.id} {self.name} {self.reg_time} {self.last_activity}"

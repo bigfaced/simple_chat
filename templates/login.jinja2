@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="static/login.css">
+</head>
+<body>
+<div id="outer_container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+                <div id="message1">
+                {% for message in messages %}
+                    <div class="message">{{message}}</div>
+                {% endfor %}
+                </div>
+        {% endif %}
+    {% endwith %}
+    <div id="login_container">
+        <form id="login_form" action="/api/login", method="POST">
+            <fieldset form="login_form">
+                <legend>Please, login to chat!</legend>
+                <p><label for="name">Nick: </label><input type="text" name="name"></p>
+                <p><label for="password">Jelszó: </label><input type="password" name="password"></p>
+                <button id="submit" type="submit">Login</button>
+            </fieldset>
+        </form>
+    </div>
+    <div id="message2"><p>Ez egy tanulási céllal készített alkalmazás. Használni
+    csak saját felelősségre! Én nem azért tettem ki, hogy bárki használni kezdje.</p>
+    <p>A program elvileg nem helyez el tracking cookie-kat a gépeden, de a szolgáltatóm (pythonanywhere) esetleg igen.
+    Adatokat bármit gyűjthet, mivel most ismerkedek a webes programozás gyönyöreivel, így
+    előfordulhat, hogy akár debug céllal, akár véletlenül benne hagyott, a keretrendszerek 
+    által használt adatgyűjtést végez (főként IP címeket, user-agenteket, egyéb, browser fingerprintingre
+    alkalmas adatokat tárolhat - a szolgáltató logot készít, abban biztosan megjelennek ezek az infók</p>
+    <p>Ha látsz jelszó mezőt, azt hagyd üresen! Csak egy olyan nickre van szükség a belépéshez,
+    amilyennel épp nincs bent senki. Ha olyat választasz, amit épp használnak, akkor talán hibaüzenetet kapsz... 
+    de az is lehet, hogy csak szó nélkül visszadob a login oldalra :)</p></div>
+</div>
+<div id="hidden" style="display: none">
+</div>
+</body>
+</html>
