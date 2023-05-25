@@ -3,7 +3,8 @@ import sqlalchemy as sa
 from datetime import datetime
 
 
-db = SQLAlchemy(session_options={"autobegin":False})
+#db = SQLAlchemy(session_options={"autobegin":False})
+db = SQLAlchemy()
 
 
 class Messages(db.Model):
